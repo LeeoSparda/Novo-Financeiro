@@ -14,6 +14,7 @@ export const BoxRow = styled.View`
 flex-direction: row;  
 align-items: center;
 display: flex;
+justify-content:space-between;
 `;
 export const IconView = styled.View`
 flex-direction:row;

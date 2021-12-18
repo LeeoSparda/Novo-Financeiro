@@ -5,8 +5,8 @@ import Home from '../Pages/Home';
 import New from '../Pages/New';
 import Profile from '../Pages/Profile';
 import CustomDrawer from '../components/CustomDrawer';
-
-
+import Lancamento from '../Pages/lancamento' ;
+import Relatorio from '../Pages/Relatorio';
 const AppDrawer = createDrawerNavigator();
 
 function AppRoutes(){
@@ -31,8 +31,9 @@ function AppRoutes(){
     }}
     >
         <AppDrawer.Screen name="Home" component={Home}/>
-        <AppDrawer.Screen name="Registrar" component={New} />
         <AppDrawer.Screen name="Perfil" component={Profile} />
+        <AppDrawer.Screen name="Relatorio" component={Relatorio} />
+        <AppDrawer.Screen name="Add" component={Lancamento} />
     </AppDrawer.Navigator>
     );
 }

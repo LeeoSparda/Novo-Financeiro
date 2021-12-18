@@ -12,7 +12,7 @@ import DatePicker from '../../components/DatePicker';
 
 import { Background, Container, Nome, Saldo, Title, List, Area } from './styles';
 
-export default function Home({navigation}) {
+export default function Relatorio({navigation}) {
 
   const [historico, setHistorico] = useState([]);
   const [saldo, setSaldo] = useState(0);
@@ -127,27 +127,6 @@ export default function Home({navigation}) {
   return (
     <Background>
       <Header />
-      <Container>
-        <Nome>{user && user.nome}</Nome>
-        <Saldo>R$ {saldo.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}</Saldo>
-      </Container>
-    <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
-    <Area>
-        <TouchableOpacity onPress={handleShowPicker}>
-          <Icon name="event" color="#FFF" size={30} />
-        </TouchableOpacity>
-        <Title>Ultimas movimentações</Title>
-      </Area>
-      <IconButton
-        icon="plus-circle"
-        color={Colors.green700}
-        size={35}
-        onPress={() => {
-          navigation.navigate('Add', { valor: '00', tipo: false, descricao: '', data: '',  documentId: '6006e22185e1c7001e4766af' })
-        }}
-      />
-    </View>
-   
       <List
         showsVerticalScrollIndicator={false}
         data={historico}

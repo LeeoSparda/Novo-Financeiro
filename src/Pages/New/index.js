@@ -64,7 +64,6 @@ export default function New() {
     Keyboard.dismiss();
     setValor('');
     navigation.navigate('Home');
-
  }
 
  return (
