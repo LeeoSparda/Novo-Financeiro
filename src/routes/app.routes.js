@@ -31,8 +31,7 @@ function AppRoutes(){
     }}
     >
         <AppDrawer.Screen name="Home" component={Home}/>
-        <AppDrawer.Screen name="Perfil" component={Profile} />
-        <AppDrawer.Screen name="Relatorio" component={Relatorio} />
+              <AppDrawer.Screen name="Relatorio" component={Relatorio} />
         <AppDrawer.Screen name="Add" component={Lancamento} />
     </AppDrawer.Navigator>
     );

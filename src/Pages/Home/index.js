@@ -33,7 +33,7 @@ export default function Home({navigation}) {
         .child(uid)
         .orderByChild('date').equalTo(format(newDate, "dd 'de' MMMM 'de' yyyy'"))
         .limitToLast(10).on('value', (snapshot) => {
-          setHistorico([]);
+         
 
           snapshot.forEach((childItem) => {
             let list = {
@@ -44,7 +44,7 @@ export default function Home({navigation}) {
               valor: childItem.val().valor,
               date: childItem.val().date,
             };
-
+            console.log(list)
             setHistorico(oldArray => [...oldArray, list].reverse());
 
           })

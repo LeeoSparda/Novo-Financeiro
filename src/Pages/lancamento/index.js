@@ -85,12 +85,16 @@ export default function Lancamento({ navigation, route }) {
         try {
             let uid = usuario.uid; 
             let key = await firebase.database().ref('historico').child(uid).push().key;
-            await firebase.database().ref('historico').child(uid).child(key).set({
+            await firebase.database().ref('historico').child(uid).child(key)
+            
+            .set({
               tipo: tipo ? "Receita" : "Despesa",
               valor: _valor,
               categoria: _categoria,
               descricao: _descricao,
-              date: format(new Date(), "dd 'de' MMMM 'de' yyyy'")
+              index: 'createdAt',
+              date: format(new Date(), "dd 'de' MMMM 'de' yyyy'"),
+              createdAt: format(new Date, "yyyy-MM-dd")
         }).catch(e=>{
                 console.log('e', );
         })       //Atualizar o nosso saldo
