@@ -83,13 +83,14 @@ export default function Lancamento({ navigation, route }) {
 
     async function handleAdd(_tipo, _valor, _descricao, _categoria){
         try {
+            console.log(_valor);
             let uid = usuario.uid; 
             let key = await firebase.database().ref('historico').child(uid).push().key;
             await firebase.database().ref('historico').child(uid).child(key)
-            
+         
             .set({
               tipo: tipo ? "Receita" : "Despesa",
-              valor: _valor,
+              valor:formatarMoeda(_valor),
               categoria: _categoria,
               descricao: _descricao,
               index: 'createdAt',
@@ -101,7 +102,7 @@ export default function Lancamento({ navigation, route }) {
          let user = firebase.database().ref('users').child(uid);
          await user.once('value').then((snapshot)=>{
            let saldo = parseFloat(snapshot.val().saldo);
-           tipo === 'despesa' ? saldo -= parseFloat(valor) : saldo += parseFloat(valor);
+           tipo  ? saldo += parseFloat(formatarMoeda(_valor)) : saldo -= parseFloat(formatarMoeda(_valor));
            user.child('saldo').set(saldo);
          });
          onSnack(true, `${tipo ? "Receita":"Despesa" } adicionada`, tipo)
